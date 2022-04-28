@@ -1,0 +1,87 @@
+[app/ui]
+version = 8.2.2.1
+modtime = 1646770378.724358000
+
+[app/launcher]
+version = 8.2.2.1
+modtime = 1646770378.725941000
+
+[views/lolz]
+owner = dsimmers
+version = 8.2.1
+modtime = 1631205802.589364000
+
+[savedsearches/3D%20Position%20FT%2FS]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 8.2.1
+modtime = 1631303923.368150000
+
+[views/drone_status]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 8.2.2.1
+modtime = 1646774083.453306000
+
+[lookups/arc_lookup.csv]
+owner = admin
+version = 8.2.1
+modtime = 1631400872.421218000
+
+[savedsearches/Drone%20Battery%20Alert]
+owner = admin
+version = 8.2.1
+modtime = 1631406796.915110000
+
+[views/player]
+owner = admin
+version = 8.2.1
+modtime = 1632630543.451941000
+
+[lookups/player.csv]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 8.2.1
+modtime = 1632629623.819137000
+
+[collections/player]
+owner = admin
+version = 8.2.1
+modtime = 1632625886.366680000
+
+[props/drone_player_csv]
+owner = admin
+version = 8.2.1
+modtime = 1632627940.864158000
+
+[inputs/monitor%3A%2F%2F%2Fopt%2Fsplunk%2Fetc%2Fapps%2Fdronewars%2Flookups%2Fplayer.csv]
+owner = admin
+version = 8.2.1
+modtime = 1632627956.053431000
+
+[views/leader_board]
+owner = admin
+version = 8.2.1
+modtime = 1632939238.523471000
+
+[app/package/check_for_updates]
+version = 8.2.2.1
+modtime = 1646770378.726504000
+
+[views/system_status]
+owner = admin
+version = 8.2.1
+modtime = 1633030910.040473000
+
+[views/drone_status_studio]
+owner = admin
+version = 8.2.1
+modtime = 1634056706.342641000
+
+[indexes/mavericktest]
+owner = admin
+version = 8.2.2.1
+modtime = 1650164718.504910000

@@ -1,0 +1,166 @@
+<form theme="dark">
+  <label>Player</label>
+  <fieldset submitButton="true">
+    <input type="dropdown" token="playerName" searchWhenChanged="true">
+      <label>Player Name</label>
+      <fieldForLabel>playerName</fieldForLabel>
+      <fieldForValue>playerName</fieldForValue>
+      <search>
+        <query>| inputlookup player.csv where playerName=*
+| table playerName</query>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </search>
+    </input>
+    <input type="time" token="field1">
+      <label></label>
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <single>
+        <title>Player Name</title>
+        <search>
+          <query>| inputlookup player.csv where playerName=$playerName$
+| table playerName</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <single>
+        <title>Obstacle 1 Points</title>
+        <search>
+          <query>index="mavericktest"   sourcetype=drone_player_csv playerName=$playerName$
+| head 1
+| table obstacle1</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0xf8be34","0x006d9c","0x53a051","0xdc4e41"]</option>
+        <option name="rangeValues">[1,5,10]</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Obstacle 2 Points</title>
+        <search>
+          <query>index="mavericktest"   sourcetype=drone_player_csv playerName=$playerName$
+| head 1
+| table obstacle2</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0xf8be34","0x006d9c","0x53a051","0x53a051"]</option>
+        <option name="rangeValues">[1,5,10]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Obstacle 3 Points</title>
+        <search>
+          <query>index="mavericktest"   sourcetype=drone_player_csv playerName=$playerName$
+| head 1
+| table obstacle3</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0xf8be34","0x0877a6","0x53a051","0xdc4e41"]</option>
+        <option name="rangeValues">[1,5,10]</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Obstacle 4</title>
+        <search>
+          <query>index="mavericktest"   sourcetype=drone_player_csv playerName=$playerName$
+| head 1
+| table obstacle4</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0xf8be34","0x0877a6","0x53a051","0x53a051"]</option>
+        <option name="rangeValues">[1,5,10]</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <single>
+        <title>Obstacle Points</title>
+        <search>
+          <query>| inputlookup player.csv where obstacle1=*, obstacle2=* obstacle3=*, obstacle4=* playerName=$playerName$
+| eval total_score = (obstacle1 + obstacle2 + obstacle3 + obstacle4)
+| table total_score</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0xdc4e41","0xf1813f","0xf8be34","0x53a051","0xdc4e41"]</option>
+        <option name="rangeValues">[4,20,30,40]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="underLabel">Points</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Flight Time</title>
+        <search>
+          <query>index=mavericktest  flightMode=TakeOff OR flightMode=Landing OR flightMode=P-Atti OR flightMode=Tripod altitude&gt;0
+| transaction startswith=TakeOff endswith=Landing
+| chart Max(flightTime)</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0x53a051","0x0877a6","0xf8be34","0xf1813f","0xdc4e41"]</option>
+        <option name="rangeValues">[50,100,200,300]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="underLabel">Seconds</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Total Score</title>
+        <search>
+          <query>index="mavericktest"   sourcetype=drone_player_csv playerName=$playerName$
+| head 1
+| eval total_score = (obstacle1 + obstacle2 + obstacle3 + obstacle4) * (300-flightTime)  
+| table total_score</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0x53a051","0x0877a6","0xf8be34","0xf1813f","0xdc4e41"]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="underLabel">Total Score</option>
+      </single>
+    </panel>
+  </row>
+</form>

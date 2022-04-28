@@ -1,0 +1,9 @@
+lon,lat,color,dash_gap,dash_time,label,rotate_to,stroke,dash_length
+133.7751,-24.988138,#fc0303,1,1000,N/A,false,0.4,1
+172.36,-42.912,#fc0303,1,1000,New Zealand,true,0.4,1
+133.7751,-24.988138,#fc0303,1,1000,N/A,false,0.4,1
+66.89,48.36,#fc0303,1,1000,Kazakhstan,true,0.4,1
+133.7751,-24.988138,#fc0303,0.5,500,Australia,true,1,1
+0.0,55.30,#fcba03,0.5,500,United Kingdom,true,1,1
+-54.7472937,-9.1815097,#fcba03,0.5,500,Brazil,true,1,1
+0.0,55.30,#fcba03,0.5,500,United Kingdom,false,1,1

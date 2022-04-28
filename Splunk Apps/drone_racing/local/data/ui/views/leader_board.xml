@@ -1,0 +1,60 @@
+<form theme="dark">
+  <label>Leader Board</label>
+  <fieldset submitButton="true">
+    <input type="time" token="field1">
+      <label></label>
+      <default>
+        <earliest>0</earliest>
+        <latest></latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <table>
+        <title>Player Scores</title>
+        <search>
+          <query>index="mavericktest" sourcetype=drone_player_csv
+| dedup playerName
+| eval obstacle_score = obstacle1 + obstacle2 + obstacle3 + obstacle4
+| eval total_score = obstacle_score * (300-flightTime)
+| table playerName, obstacle1, obstacle2, obstacle3, obstacle4, obstacle_score,flightTime, total_score
+| sort -total_score
+| rename playerName as "Player Name" obstacle1 as "Obstacle 1" obstacle2 as "Obstacle 2" obstacle3 as "Obstacle 3" obstacle4 as "Obstacle 4" obstacle_score as "Obstacle Score" total_score as "Total Score" flightTime as "Flight Time (sec)"</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+        <format type="color" field="Obstacle 1">
+          <colorPalette type="list">[#F8BE34,#F1813F,#53A051,#DC4E41]</colorPalette>
+          <scale type="threshold">2,6,11</scale>
+        </format>
+        <format type="color" field="Obstacle 2">
+          <colorPalette type="list">[#F8BE34,#F1813F,#53A051,#DC4E41]</colorPalette>
+          <scale type="threshold">2,6,11</scale>
+        </format>
+        <format type="color" field="Obstacle 3">
+          <colorPalette type="list">[#F8BE34,#F1813F,#53A051,#DC4E41]</colorPalette>
+          <scale type="threshold">2,6,11</scale>
+        </format>
+        <format type="color" field="Obstacle 4">
+          <colorPalette type="list">[#F8BE34,#F1813F,#53A051,#DC4E41]</colorPalette>
+          <scale type="threshold">2,6,11</scale>
+        </format>
+        <format type="color" field="Obstacle Score">
+          <colorPalette type="list">[#DC4E41,#F8BE34,#F1813F,#53A051,#DC4E41]</colorPalette>
+          <scale type="threshold">11,21,31,41</scale>
+        </format>
+        <format type="color" field="Total Score">
+          <colorPalette type="minMidMax" maxColor="#53A051" midColor="#FFFFFF" minColor="#DC4E41"></colorPalette>
+          <scale type="minMidMax" midType="percentile" midValue="50"></scale>
+        </format>
+        <format type="color" field="Flight Time (sec)">
+          <colorPalette type="minMidMax" maxColor="#FFFFFF" minColor="#53A051"></colorPalette>
+          <scale type="minMidMax"></scale>
+        </format>
+      </table>
+    </panel>
+  </row>
+</form>

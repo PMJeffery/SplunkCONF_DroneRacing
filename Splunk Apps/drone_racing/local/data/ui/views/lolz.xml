@@ -1,0 +1,49 @@
+<dashboard>
+  <label>lolz</label>
+  <description>lolz</description>
+  <row>
+    <panel>
+      <table>
+        <title>drone 3d plot</title>
+        <search ref="drone 3d plot"></search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>drone acceleration</title>
+        <search ref="drone acceleration"></search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>drone height</title>
+        <search ref="drone height"></search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>drone table view</title>
+        <search ref="drone table view"></search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>drone velocity</title>
+        <search ref="drone velocity"></search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+  </row>
+</dashboard>
