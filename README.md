@@ -9,7 +9,6 @@
 -   iOS DJI Data Logger for Splunk
     -   Requirements
     -   Source Code
-    -   Compiled iOS App
     -   Software Design Document
 -   Splunk DJI Drone App
     -   .conf22 Version
