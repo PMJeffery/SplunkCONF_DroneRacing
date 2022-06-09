@@ -1,0 +1,32 @@
+PODS:
+  - DJI-SDK-iOS (4.16)
+  - DJI-UXSDK-iOS (4.16)
+  - DJIFlySafeDatabaseResource (01.00.01.18)
+  - DJIWidget (1.6.6)
+  - iOS-Color-Picker (1.2)
+
+DEPENDENCIES:
+  - DJI-SDK-iOS (~> 4.16)
+  - DJI-UXSDK-iOS (~> 4.16)
+  - DJIFlySafeDatabaseResource (~> 01.00.01.18)
+  - DJIWidget (~> 1.6.6)
+  - iOS-Color-Picker
+
+SPEC REPOS:
+  trunk:
+    - DJI-SDK-iOS
+    - DJI-UXSDK-iOS
+    - DJIFlySafeDatabaseResource
+    - DJIWidget
+    - iOS-Color-Picker
+
+SPEC CHECKSUMS:
+  DJI-SDK-iOS: 1eea401c947433562e268f9cce25f1ea5c132875
+  DJI-UXSDK-iOS: d9f9b0ce3eed694254e41e078f0592b48924c59e
+  DJIFlySafeDatabaseResource: 400e1856340042bd6943e53c2d4b374ac8409702
+  DJIWidget: c5bb70aeb7deb9b0a99e5e63539ac249db4fab67
+  iOS-Color-Picker: 4284a4d744a7cafe9d22d4b66eefc45342b80f1d
+
+PODFILE CHECKSUM: 0b82ea694036a9455f514cc78e51ad775ce86301
+
+COCOAPODS: 1.11.3
